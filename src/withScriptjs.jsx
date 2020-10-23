@@ -61,7 +61,12 @@ export function withScriptjs(BaseComponent) {
       let script = document.querySelector(`script[src="${googleMapURL}"]`)
 
       if (script) {
-        script.addEventListener("load", this.handleLoaded)
+        script.addEventListener("load", () => {
+          console.log("loaded!")
+          this.handleLoaded()
+        })
+
+        this.handleLoaded()
       } else {
         scriptjs(googleMapURL, this.handleLoaded)
       }
