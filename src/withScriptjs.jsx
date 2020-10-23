@@ -62,11 +62,8 @@ export function withScriptjs(BaseComponent) {
 
       if (script) {
         script.addEventListener("load", () => {
-          console.log("loaded!")
           this.handleLoaded()
         })
-
-        this.handleLoaded()
       } else {
         scriptjs(googleMapURL, this.handleLoaded)
       }
