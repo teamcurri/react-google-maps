@@ -57,6 +57,10 @@ export function withScriptjs(BaseComponent) {
       // eslint-disable-next-line global-require
       const scriptjs = require(`scriptjs`)
       const { googleMapURL } = this.props
+
+      let script = document.querySelector(`script[src="${src}"]`)
+      console.log("script available in withScriptJs?", script)
+
       scriptjs(googleMapURL, this.handleLoaded)
     }
 
