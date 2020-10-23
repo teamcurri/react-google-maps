@@ -58,10 +58,13 @@ export function withScriptjs(BaseComponent) {
       const scriptjs = require(`scriptjs`)
       const { googleMapURL } = this.props
 
-      let script = document.querySelector(`script[src="${src}"]`)
-      console.log("script available in withScriptJs?", script)
+      let script = document.querySelector(`script[src="${googleMapURL}"]`)
 
-      scriptjs(googleMapURL, this.handleLoaded)
+      if (script) {
+        script.addEventListener("load", this.handleLoaded)
+      } else {
+        scriptjs(googleMapURL, this.handleLoaded)
+      }
     }
 
     componentWillUnmount() {
